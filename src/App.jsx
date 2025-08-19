@@ -32,7 +32,7 @@ export default function App() {
   };
 
   // 제스처(터치/마우스) 공통
-  const threshold = 50;
+  const threshold = 150;
 
   const onTouchStart = (e) => {
     isDragging.current = true;

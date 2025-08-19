@@ -78,19 +78,20 @@ export default function Calendar({ value, onChange }) {
 
             return (
                 <button
-                key={idx}
-                className={[
+                  key={idx}
+                  className={[
                     "aspect-square rounded-xl flex items-center justify-center text-sm sm:text-base",
                     "transition select-none",
-                    date
-                    ? "hover:bg-slate-100 active:scale-95"
-                    : "opacity-0 pointer-events-none",
-                    isSelected ? "bg-indigo-400 text-white hover:bg-indigo-400" : "",
-                    // ✅ 선택 없을 때만 오늘 날짜 링 표시
-                    !isSelected && isToday && !value ? "ring-2 ring-indigo-600" : "",
-                ].join(" ")}
-                disabled={!date}
-                onClick={() => date && onChange?.(date)}
+                    date ? (isSelected
+                            ? "active:scale-95"                    // 선택된 날: hover 회색 넣지 않음
+                            : "hover:bg-slate-100 active:scale-95" // 선택 안 된 날: hover 회색 허용
+                          )
+                        : "opacity-0 pointer-events-none",
+                    isSelected ? "bg-indigo-500 text-white hover:bg-indigo-500" : "",
+                    !isSelected && isToday && !value ? "ring-2 ring-indigo-500" : "",
+                  ].join(" ")}
+                  disabled={!date}
+                  onClick={() => date && onChange?.(date)}
                 >
                 {date ? date.getDate() : ""}
                 </button>
