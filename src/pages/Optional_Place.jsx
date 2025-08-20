@@ -14,13 +14,11 @@ export default function Optional_Place({
 }) {
   const ready = useNaverLoader();
 
-  // 초기 중심(현위치 시도, 실패시 서울시청)
   const [center, setCenter] = useState({ lat: 37.5665, lng: 126.9780 });
   const [regionText, setRegionText] = useState(""); // 예: 성남시 분당구
   const [selected, setSelected] = useState(null);   // { lat, lng, address }
   const [openPicker, setOpenPicker] = useState(false);
 
-  // 1) 현위치 시도
   useEffect(() => {
     if (!navigator.geolocation) return;
     navigator.geolocation.getCurrentPosition(
